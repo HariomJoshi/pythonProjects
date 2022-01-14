@@ -7,6 +7,7 @@ import webbrowser
 import vlc
 import os
 import smtplib
+import requests
 
 
 engine = pyttsx3.init('sapi5')
@@ -121,6 +122,19 @@ if __name__ == '__main__':
             # following path is copied from    VScode file location -> properties -> target
             codepath = "C:\\Users\\hariom\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
             os.startfile(codepath)
+
+        elif 'news' in query:
+            url = ('https://newsapi.org/v2/top-headlines?'
+           'country=in&'
+           'apiKey=fbbb6f72a8fa4e4391dd376902abfc28')
+
+            r = requests.get(url)
+            for i in range(1, 11):
+                string = f"News{i}"
+                news = r.json()['articles'][i]['description']
+                speak(string)
+                # time.sleep(0.5)
+                speak(news)
 
         elif 'send email' in query:
             speak("Type the email you want to send email to")
