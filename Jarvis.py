@@ -1,5 +1,6 @@
 import datetime
 import time
+from unittest import result
 import speech_recognition as sr
 import pyttsx3
 import wikipedia
@@ -8,6 +9,7 @@ import vlc
 import os
 import smtplib
 import requests
+from googlesearch import search
 
 
 engine = pyttsx3.init('sapi5')
@@ -94,6 +96,38 @@ if __name__ == '__main__':
             speak("opening youtube")
             webbrowser.open('youtube.com')
 
+        elif 'search for' in query:
+            speak("what do you want to search for? ")
+            query = takeCommand()
+            result = {}
+            i = 0;
+            for j in search(query, tld="co.in", num=10, stop=10, pause=2):
+                result[i] = j
+                print(j)
+                i +=1
+            speak("results are displayed on the screen sir, which link do you want me to open?")
+            choice = takeCommand()
+            if 'first' in choice:
+                webbrowser.open(result[0])
+            elif 'second' in choice:
+                webbrowser.open(result[1])
+            elif 'third' in choice:
+                webbrowser.open(result[2])
+            elif 'fourth' in choice:
+                webbrowser.open(result[3])
+            elif 'fifth' in choice:
+                webbrowser.open(result[4])
+            elif 'sixth' in choice:
+                webbrowser.open(result[5])
+            elif 'seventh' in choice:
+                webbrowser.open(result[6])
+            elif 'eighth' in choice:
+                webbrowser.open(result[7])
+            elif 'nineth' in choice:
+                webbrowser.open(result[8])
+            elif 'tenth' in choice:
+                webbrowser.open(result[9])
+
         elif 'open google' in query:
             speak("opening google")
             webbrowser.open('google.com')
@@ -149,12 +183,21 @@ if __name__ == '__main__':
             send_mail(sendto, subject, body)
             speak("Mail sent")
 
+        elif 'my website' in query:
+            webbrowser.open('https://hariomjoshi.github.io/portfolioWebsite/')
+
+        elif 'github' in query:
+            webbrowser.open('https://github.com/')
+
         elif 'perfect' in query:
             speak("I am perfect, but not as perfect as you!")
 
         elif 'quit' in query:
             speak("quitting")
             break
+
+        elif 'thank you' in query:
+            speak("It is my duty to do your work sir, no need to thank me")
 
 
 
