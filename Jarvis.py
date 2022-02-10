@@ -6,12 +6,17 @@ import speech_recognition as sr
 import pyttsx3
 import wikipedia
 import webbrowser
-import vlc
+# import vlc
 import os
 import smtplib
 import requests
 from googlesearch import search
+from win10toast import ToastNotifier
 
+
+
+toast = ToastNotifier()
+toast.show_toast("JARVIS", "Jarvis has been started", duration= 30)
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -55,8 +60,10 @@ def takeCommand():
         print(f"User said: {query}\n")
     except Exception as e:
         # print(e)
+        # if engine is not able to recognize, so must not stop abruptly, so we are handling the error
         print("Not able to recognize")
         return "None"
+    # if it is able to recognize so the function returns the query, i.e., interpreted string
     return query
 
 
