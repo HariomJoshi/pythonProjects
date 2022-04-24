@@ -56,12 +56,12 @@ def takeCommand():
 
     try:
         print("Recognizing...")
-        query = r.recognize_google(audio, language='en-in')
+        query = r.recognize_google(audio, language='en-IN')
         print(f"User said: {query}\n")
     except Exception as e:
         # print(e)
         # if engine is not able to recognize, so must not stop abruptly, so we are handling the error
-        print("Not able to recognize")
+        print("Unable to recognize")
         return "None"
     # if it is able to recognize so the function returns the query, i.e., interpreted string
     return query
@@ -75,9 +75,9 @@ def send_mail(Receiver_email, subject, body):
     server.ehlo()
     
 
-    server.login('YOUR EMAIL@gmail.com', 'YOUR PASSOWORD')
+    server.login('goodhariom@gmail.com', 'jsrjgmityiktebvi')
     msg = f"Subject: {subject}\n\n{body}"
-    server.sendmail("YOUR EMAIL@gmail.com", Receiver_email, msg)
+    server.sendmail("goodhariom@gmail.com", Receiver_email, msg)
 
 
     server.quit()

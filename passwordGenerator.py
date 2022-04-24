@@ -15,7 +15,7 @@ class passGenerator:
             password = password + self.encrypt_dict[key]
 
         return password
-
+ 
 
 
 class file:
