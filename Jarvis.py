@@ -75,9 +75,9 @@ def send_mail(Receiver_email, subject, body):
     server.ehlo()
     
 
-    server.login('goodhariom@gmail.com', 'jsrjgmityiktebvi')
+    server.login('YOUREMAIL@GMAIL.COM', 'YOUR PASSWORD')
     msg = f"Subject: {subject}\n\n{body}"
-    server.sendmail("goodhariom@gmail.com", Receiver_email, msg)
+    server.sendmail("YOUREMAIL@GMAIL.COM", Receiver_email, msg)
 
 
     server.quit()
